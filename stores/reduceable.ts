@@ -2,10 +2,10 @@
 
 import type { Writable } from 'svelte/store';
 import { assertStore } from '../internal/assertStore';
-interface Reduceable extends Writable<any> {
+export interface Reduceable extends Writable<any> {
 	dispatch: Function;
 }
-interface Dispatch {
+export interface Dispatch {
 	type: string;
 	payload?: any;
 }
