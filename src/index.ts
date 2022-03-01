@@ -1,10 +1,8 @@
 /** @format */
 
-export { persistable } from '../stores/persistable.mjs';
-export { reduceable } from '../stores/reduceable.mjs';
+export { persistable } from '../stores/persistable';
+export { reduceable } from '../stores/reduceable';
 
 const log = (message: string): void => {
 	console.log(message);
 };
-
-log('something something');

@@ -19,5 +19,5 @@ export default {
 			sourcemap: true,
 		},
 	],
-	plugins: [svelte(), resolve(), typescript()],
+	plugins: [typescript(), svelte(), resolve()],
 };
