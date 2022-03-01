@@ -11,11 +11,18 @@ interface Dispatch {
 }
 
 /**
+ * Function that will create a reduceable store that contains a new **dispatch** method. The method
+ * will take an Object containing a *type* and a *payload* property. Both properties as well as the
+ * state of the store will be passed to the reducer function to do its thing.
  *
- * @param { Function } reducer
- * @param { Writable<any> | any } argument
- * @param { Function } initalize
- * @returns { Reduceable }
+ * @param { Function } reducer - The reducer function that will operate on the state. Received a state snapshot
+ * as well as the `{ type, payload }` argument of the dispatch method.
+ * @param { Writable<any> | any } argument - The store to append the dispatch method to OR the inital value of
+ * a newly created writable store. This enables using already created stores as well as simple values.
+ * @param { Function? } initalize - A optional function to call after creating/patching the store. Receives
+ * the state of the store as argument.
+ *
+ * @returns { Reduceable } a created/patched writable store containing a dispatch method.
  */
 
 export const reduceable = (
