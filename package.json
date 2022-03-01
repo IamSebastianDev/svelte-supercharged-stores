@@ -7,8 +7,8 @@
 	"module": "dist/index.mjs",
 	"svelte": "src/index.js",
 	"scripts": {
-		"build": "rollup -c",
-		"prepublishOnly": "npm run compile && npm run build"
+		"build": "rm -rf dist && rollup -c rollup.config.js",
+		"prepublishOnly": "npm run build"
 	},
 	"keywords": [
 		"Svelte",
@@ -20,6 +20,7 @@
 	"author": "Sebastian Heinz",
 	"license": "MIT",
 	"devDependencies": {
+		"@rollup/plugin-typescript": "^8.3.1",
 		"rollup": "^2.61.1",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-svelte": "^7.1.0",
