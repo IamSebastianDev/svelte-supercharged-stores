@@ -1,13 +1,17 @@
 /** @format */
 
-import type { Writable } from 'svelte/store';
+import { writable, Writable } from 'svelte/store';
 import { assertStore } from '../internal/assertStore';
 export interface Reduceable extends Writable<any> {
 	dispatch: Function;
 }
-export interface Dispatch {
+export interface Action {
 	type: string;
 	payload?: any;
+}
+
+export interface Reducer {
+	<T>(state: T, action: Action): T;
 }
 
 /**
@@ -26,7 +30,7 @@ export interface Dispatch {
  */
 
 export const reduceable = (
-	reducer: Function,
+	reducer: Reducer,
 	argument: Writable<any> | any,
 	initalize?: Function
 ): Reduceable => {
@@ -36,18 +40,18 @@ export const reduceable = (
 	 * directly as well as passing a already created store.
 	 */
 
-	const store = assertStore(argument);
+	const store = assertStore(argument) ? argument : writable(argument);
 	const { set, subscribe, update } = store;
 
 	// Create the dispatch function using the given update method
 
-	const dispatch = ({ type, payload }: Dispatch) =>
-		update((state) => reducer(state, { type, payload }));
+	const dispatch = ({ type, payload }: Action) =>
+		update(<T>(state: T) => reducer(state, { type, payload }));
 
 	// If a initalize function is passed, use the update method
 	// to set the state with the initalizer function
 
-	initalize && update((state) => initalize(state));
+	initalize && update(<T>(state: T) => initalize(state));
 
 	return { set, subscribe, update, dispatch };
 };
