@@ -3,15 +3,12 @@
 import { Writable, writable } from 'svelte/store';
 
 /**
- * A utility method to assert that a given value is a store. If the value is not
- * already a writable, a new writable is initalized with the given value as
- * inital value.
+ * A utility method to assert that a given value is a store. Returns true if the value is a store,
+ * false if it is not
  *
  * @param {any | Writable } value - the value to assert/wrap
- * @returns { Writable } the existing or newly created writable
+ * @returns { Boolean } the existing or newly created writable
  */
 
-export const assertStore = (value: any | Writable<any>): Writable<any> =>
-	value.hasOwnProperty('update') && value.hasOwnProperty('set')
-		? value
-		: writable(value);
+export const assertStore = (value: any | Writable<any>): boolean =>
+	value.hasOwnProperty('update') && value.hasOwnProperty('set');
