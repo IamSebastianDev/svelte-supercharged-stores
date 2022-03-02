@@ -41,7 +41,7 @@ export const reduceable = (
 	 */
 
 	const store = assertStore(argument) ? argument : writable(argument);
-	const { set, subscribe, update } = store;
+	const { update } = store;
 
 	// Create the dispatch function using the given update method
 
