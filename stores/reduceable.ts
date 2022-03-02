@@ -53,5 +53,5 @@ export const reduceable = (
 
 	initalize && update(<T>(state: T) => initalize(state));
 
-	return { set, subscribe, update, dispatch };
+	return { ...store, dispatch };
 };
