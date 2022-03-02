@@ -1,4 +1,4 @@
 /** @format */
 
 export { persistable } from './stores/persistable';
-export { reduceable, Reduceable, Dispatch } from './stores/reduceable';
+export { reduceable, Reduceable, Action } from './stores/reduceable';
