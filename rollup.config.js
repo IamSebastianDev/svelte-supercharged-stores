@@ -2,6 +2,7 @@
 
 import svelte from 'rollup-plugin-svelte';
 import typescript from '@rollup/plugin-typescript';
+import cleanup from 'rollup-plugin-cleanup';
 
 export default {
 	input: 'index.ts',
@@ -19,5 +20,5 @@ export default {
 		},
 	],
 	external: ['svelte/store', 'svelte'],
-	plugins: [typescript(), svelte()],
+	plugins: [typescript(), svelte(), cleanup({ extensions: ['js', 'ts'] })],
 };
