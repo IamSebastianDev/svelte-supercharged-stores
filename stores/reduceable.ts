@@ -1,15 +1,15 @@
 /** @format */
 
 import { writable, Writable } from 'svelte/store';
-import { assertStore } from '../internal/assertStore';
-export interface Reduceable extends Writable<any> {
-	dispatch: Function;
-}
+
 export interface Action {
 	type: string;
 	payload?: any;
 }
 
+export interface Reduceable<T> extends Writable<T> {
+	dispatch(action: Action): void;
+}
 export interface Reducer {
 	<T>(state: T, action: Action): T;
 }
@@ -21,7 +21,7 @@ export interface Reducer {
  *
  * @param { Function } reducer - The reducer function that will operate on the state. Received a state snapshot
  * as well as the `{ type, payload }` argument of the dispatch method.
- * @param { Writable<any> | any } argument - The store to append the dispatch method to OR the inital value of
+ * @param { Writable<any> } argument - The store to append the dispatch method to OR the inital value of
  * a newly created writable store. This enables using already created stores as well as simple values.
  * @param { Function? } initalize - A optional function to call after creating/patching the store. Receives
  * the state of the store as argument.
@@ -29,18 +29,17 @@ export interface Reducer {
  * @returns { Reduceable } a created/patched writable store containing a dispatch method.
  */
 
-export const reduceable = (
+export const reduceable = <T>(
 	reducer: Reducer,
-	argument: Writable<any> | any,
+	store: Writable<T>,
 	initalize?: Function
-): Reduceable => {
+): Reduceable<T> => {
 	/**
 	 * Assert/create the argument as store, depending on what is passed
 	 * by the user. This is useful because it allows creating a store
 	 * directly as well as passing a already created store.
 	 */
 
-	const store = assertStore(argument) ? argument : writable(argument);
 	const { update } = store;
 
 	// Create the dispatch function using the given update method
