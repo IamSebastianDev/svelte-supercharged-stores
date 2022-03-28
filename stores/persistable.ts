@@ -39,11 +39,11 @@ export const persistable = <T>(
 	const { method, namespace } = storeInit;
 	const storageIdentifier = (namespace ? namespace + '__' : '') + identifier;
 	let storedValue = window[method].getItem(storageIdentifier);
-	storedValue && JSON.parse(storedValue);
+	const parsedValue = storedValue && JSON.parse(storedValue);
 
 	const store = writable(parsedValue || argument);
 
-	store.subscribe((state: any) =>
+	store.subscribe((state) =>
 		window[method].setItem(storageIdentifier, JSON.stringify(state))
 	);
 
