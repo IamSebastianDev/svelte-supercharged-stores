@@ -1,6 +1,5 @@
 /** @format */
 
-import { assertStore } from '../internal/assertStore';
 import { Writable, writable } from 'svelte/store';
 
 interface Persistable<T> extends Writable<T> {}
