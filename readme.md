@@ -104,4 +104,4 @@ The `Reducer` function will always receive a snapshot of the current store and t
 
 ## 📋 License
 
-Pangolicons is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+Svelte-Supercharged-Stores is licensed under the [MIT License](https://opensource.org/licenses/MIT).
