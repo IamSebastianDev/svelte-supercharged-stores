@@ -13,31 +13,41 @@ Svelte Supercharged Stores introduces new types of custom `Stores` to the [https
 Install the stores via `yarn` or `npm` by running the following command.
 
 ```bash
-yarn add @iasd/svelte-supercharged-stores
+yarn add -D @iasd/svelte-supercharged-stores
 # or use npm
-npm install @iasd/svelte-supercharged-stores
+npm install -D @iasd/svelte-supercharged-stores
 ```
 
 ## `Persistable`
 
-The `persistable` store creates a store that persists between sessions, using local- or session storage.
+The `persistable` store creates a store that persists between sessions, using `local`- or `session` storage.
 
-```html
+```ts
+// store.ts
+import { persistable } from '@iasd/svelte-supercharged-stores';
+
+// create the optional config object
+
+export const init = {
+    namespace: 'namespace',
+    storage: 'localStorage' | 'sessionStorage',
+};
+
+// To create a persistent value, pass a value to persist and a identifier string.
+// Every time the value is created, it will check the storage for a value and set
+// the svelte store accordingly.
+export const store = persistable(0, 'persistent', init);
+```
+
+You can then use the created `Persistable` store in your Component like this:
+
+```svelte
+<!-- Component.Svelte -->
 <script>
-    import { persistable } from '@iasd/svelte-supercharged-stores';
-
-    // create the optional config object
-
-    const init = {
-        namespace: 'string',
-        storage: 'localStorage' | 'sessionStorage',
-    };
-
-    // To create a persistant value, pass a value to persist and a identifier string.
-    // Everytime the value is created, it will check the storage for a value and set
-    // the svelte store accordingly.
-    const store = persistable(0, 'persistant', init);
+    import { store } from "./store.ts";
 </script>
+
+<button on:click={() => $store++}>{$store}</button>
 ```
 
 After creating the persistable, the store can be used like any other Svelte store.
@@ -46,35 +56,43 @@ The optional `init` config object can be used to control the persistable store (
 
 > Note: The storeInit object should ideally be used to configure multiple persistable stores to use the same method and namespace.
 
-After creating the store once, the store will automatically keep the localStorage or sessionStorage in sync. This means, that even after reloading, the store will initalize with the value stored in the chosen storage.
+After creating the store once, the store will automatically keep the localStorage or sessionStorage in sync. This means, that even after reloading, the store will initialize with the value stored in the chosen storage.
 
 ## `Reduceable`
 
-The `reduceable` store adds a reducer pattern to a `Writable` store. This can be used to update the store in a more systematic fashion if so desired. To update the values of the store, define a `Reducer` function and pass it to the store.
+The `reduceable` store adds a reducer pattern to a `Writeable` store. This can be used to update the store in a more systematic fashion if so desired. To update the values of the store, define a `Reducer` function and pass it to the store.
 
-```html
+```ts
+// store.ts
+import { reduceable } from '@iasd/svelte-supercharged-stores';
+
+// Create a basic reducer
+
+type State = { count: number };
+type Actions = 'increment' | 'decrement';
+
+const initialState: State = { count: 0 };
+const reducer: Reducer<State, Actions> = (state, { type, payload }) => {
+    switch (type) {
+        case 'increment':
+            return { ...state, count: state.count + payload };
+        case 'decrement':
+            return { ...state, count: state.count - payload };
+        default:
+            return { ...state };
+    }
+};
+
+// define the reducer store
+export const store = reduceable<State, Actions>(initialState, reducer);
+```
+
+You can then use the created `Reduceable` store in your Component like this:
+
+```svelte
+<!-- Component.Svelte -->
 <script>
-	import { reduceable } from "@iasd/svelte-supercharged-stores"
-
-	// Create a basic reducer
-
-	type State = { count: number };
-	type Actions = 'increment' | 'decrement';
-
-	const initialState: State = { count: 0 }
-	const reducer: Reducer<State, Actions> = (state, { type, payload }) => {
-		switch(type){
-			case 'increment':
-				return { ...state, count: state.count + payload};
-			case 'decrement':
-				return { ...state, count: state.count - payload}
-			default:
-				return { ...state }
-		}
-	}
-
-	// define the reducer store
-	const store = reduceable<State, Actions>(initialState, reducer);
+    import { store } from "./store.ts";
 </script>
 
 
