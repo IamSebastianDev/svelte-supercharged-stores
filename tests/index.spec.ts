@@ -6,6 +6,7 @@ import { reduceable, persistable } from '../src/lib';
 import { get } from 'svelte/store';
 import { Reducer } from '../src/types';
 
+// local storage mock
 const _storage: Record<string, any> = {};
 (global as any).window = {
     localStorage: {
