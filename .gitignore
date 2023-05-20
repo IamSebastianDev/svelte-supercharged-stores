@@ -41,3 +41,24 @@ Temporary Items
 
 # Local History for Visual Studio Code
 .history/
+
+# Uploads folder
+*/uploads/**/*.*
+!*/uploads/**/.gitkeep
+
+# Custom folders
+archive
+.idea
+
+# Yarn
+.yarn/*
+yarn-error.log
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Test files
+coverage
