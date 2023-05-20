@@ -1,35 +1,54 @@
 {
-	"name": "svelte-supercharged-stores",
-	"version": "1.0.2",
-	"description": "Custom stores for Svelte(Kit)",
-	"types": "dist/types",
-	"main": "dist/index.js",
-	"module": "dist/index.mjs",
-	"svelte": "./index.ts",
-	"scripts": {
-		"build": "rm -rf dist && rollup -c rollup.config.js && tsc",
-		"prepublishOnly": "npm run build"
-	},
-	"keywords": [
-		"Svelte",
-		"stores",
-		"localStorage",
-		"persistable",
-		"reduceable"
-	],
-	"author": "Sebastian Heinz",
-	"license": "MIT",
-	"devDependencies": {
-		"@rollup/plugin-typescript": "^8.3.1",
-		"rollup": "^2.61.1",
-		"rollup-plugin-cleanup": "^3.2.1",
-		"rollup-plugin-svelte": "^7.1.0",
-		"svelte": "^3.44.3",
-		"tslib": "^2.3.1",
-		"typescript": "^4.6.2"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/IamSebastianDev/svelte-supercharged-stores"
-	}
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "types": "dist/types/index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.4.2",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/node": "^18.16.0",
+    "alex": "^11.0.0",
+    "ava": "^5.2.0",
+    "esbuild": "^0.17.5",
+    "husky": "^8.0.2",
+    "prettier": "^2.8.0",
+    "pretty-quick": "^3.1.3",
+    "rollup": "^3.21.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "rollup-plugin-svelte": "^7.1.4",
+    "semantic-release": "^21.0.0",
+    "svelte": "^3.59.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "preci": "rm -rf node_modules",
+    "ci": "yarn install --frozen-lockfile",
+    "reset": "rm -rf .git && git init && git branch -m main && git branch release && git checkout -b development",
+    "setup": "npx husky install",
+    "build": " rollup -c .config/rollup.config.js",
+    "dev": "yarn build --watch",
+    "lint": "alex .",
+    "semantic-release": "semantic-release --branches release",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--no-warnings",
+      "--loader=ts-node/esm",
+      "--experimental-specifier-resolution=node"
+    ]
+  }
 }
