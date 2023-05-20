@@ -2,11 +2,12 @@
 .github
 .husky
 .vscode
-src
 .alexrc
 .commitlintrc.json
 .prettierignore
 .prettierrc
+.coverage
+.idea
 commitlint.config.json
 tsconfig.json
 tests
