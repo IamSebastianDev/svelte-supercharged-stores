@@ -5,17 +5,18 @@ import esbuild from 'rollup-plugin-esbuild';
 import cleanup from 'rollup-plugin-cleanup';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import svelte from 'rollup-plugin-svelte';
 import pkg from '../package.json' assert { type: 'json' };
 
 const bundle = (config) => ({
     input: './src/index.ts',
-    external: (id) => !/^[./]/.test(id),
+    external: ['svelte/store', 'svelte'],
     ...config,
 });
 
 export default [
     bundle({
-        plugins: [commonjs(), resolve(), esbuild(), cleanup({ extensions: ['ts'] })],
+        plugins: [commonjs(), svelte(), resolve(), esbuild(), cleanup({ extensions: ['ts'] })],
         output: [
             {
                 file: pkg.main,
@@ -34,6 +35,6 @@ export default [
             file: pkg.types,
             format: 'es',
         },
-        plugins: [resolve(), commonjs(), cleanup({ extensions: ['.ts'] }), dts()],
+        plugins: [resolve(), svelte(), commonjs(), cleanup({ extensions: ['.ts'] }), dts()],
     }),
 ];
