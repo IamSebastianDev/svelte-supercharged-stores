@@ -59,5 +59,8 @@
   "repository": "https://github.com/IamSebastianDev/svelte-supercharged-stores.git",
   "author": "Sebastian <sebastian@iamsebastian.dev>",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "svelte": "./src/index.ts"
 }
