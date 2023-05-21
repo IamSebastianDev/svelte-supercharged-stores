@@ -2,26 +2,15 @@
 
 import test from 'ava';
 
-import { reduceable, persistable } from '../src/lib';
+import { reduceable, persistable, asyncReadable } from '../src/lib';
 import { get } from 'svelte/store';
 import { Reducer } from '../src/types';
+import { createMockStorage, noop } from './_test.utils';
 
 // local storage mock
-const _storage: Record<string, any> = {};
-(global as any).window = {
-    localStorage: {
-        getItem: (key: string) => {
-            return _storage[key] ?? null;
-        },
-        setItem: (key: string, value: any) => {
-            _storage[key] = value;
-        },
-        removeItem: (key: string) => {
-            delete _storage[key];
-        },
-    },
-};
-
+test.before(() => {
+    createMockStorage();
+});
 test.afterEach((t) => {
     window.localStorage.removeItem('test-store');
 });
@@ -166,4 +155,46 @@ test('Persistable store clears value from storage', (t) => {
     // Check if the value is removed from storage
     const storedValue = window.localStorage.getItem(identifier);
     t.is(storedValue, null);
+});
+
+test('asyncReadable should set loading to true while executing the handler', async (t) => {
+    const mockHandler = async () => {
+        // Simulate an asynchronous operation
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        return 'result';
+    };
+
+    const { loading, data } = asyncReadable(mockHandler);
+    data.subscribe(noop);
+
+    t.true(get(loading)); // Assert that loading is initially true
+
+    await new Promise((resolve) => setTimeout(resolve, 200)); // Wait for the handler to complete
+
+    t.false(get(loading)); // Assert that loading is false after the handler completes
+});
+
+test('asyncReadable should set data when the handler resolves successfully', async (t) => {
+    const expectedResult = 'result';
+    const mockHandler = async () => expectedResult;
+
+    const { data } = asyncReadable(mockHandler);
+    data.subscribe(noop);
+    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait for the handler to complete
+
+    t.is(get(data), expectedResult); // Assert that the data is set to the expected result
+});
+
+test('asyncReadable should set error when the handler rejects', async (t) => {
+    const expectedError = new Error('Some error');
+    const mockHandler = async () => {
+        throw expectedError;
+    };
+
+    const { error, data } = asyncReadable(mockHandler);
+    data.subscribe(noop);
+
+    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait for the handler to complete
+
+    t.is(get(error), expectedError); // Assert that the error is set to the expected error object
 });
