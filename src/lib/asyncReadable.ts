@@ -45,17 +45,10 @@ export const asyncReadable = <Result, Args extends (Writable<unknown> | Readable
     const _loading = writable<boolean>(false);
     const _error = writable<Error | null>(null);
 
-    // const data = readable<Result | null>(null, (set) => {
-    //     _loading.set(true);
-    //     handler(...args)
-    //         .then((result) => set(result))
-    //         .catch((error) => _error.set(error))
-    //         .finally(() => _loading.set(false));
-    // });
-
     const data = derived<Args, Result | null>(
         args,
         ($args, set) => {
+            _error.set(null);
             _loading.set(true);
             handler(...$args)
                 .then((result) => set(result))
