@@ -1,4 +1,4 @@
 /** @format */
 
-export { persistable, reduceable } from './lib';
-export type { Persistable, PersistableStoreInit, Reduceable, Reducer, Action } from './types';
+export { persistable, reduceable, asyncReadable } from './lib';
+export type { Persistable, PersistableStoreInit, Reduceable, Reducer, Action, AsyncReadable } from './types';
