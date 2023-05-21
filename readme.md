@@ -111,6 +111,32 @@ You can then use the created `Reduceable` store in your Component like this:
 
 The `Reducer` function will always receive a snapshot of the current store and the action object passed to the dispatch method.
 
+## `AsyncReadable`
+
+The `asyncReadable` store can be used to fetch a resource or perform any action asynchronously. The function will return `Readable` stores for the `loading`, `error` & `data` states of the operation.
+
+```ts
+// store.ts
+import { asyncReadable } from '@iasd/svelte-supercharged-stores';
+export const asyncStore = asyncReadable(async () => {
+    return await fetch('/api/');
+});
+```
+
+You can then use the created `AsyncReadable` store in your Component like this:
+
+```svelte
+<!-- Component.Svelte -->
+<script>
+    import { asyncStore } from "./store.ts";
+    const {loading, error, data} = asyncStore;
+</script>
+
+Loading: {$loading}
+Error: {$error}
+data: {$data}
+```
+
 ## Contributing
 
 If you would like to contribute, take a look at the [contribution guide](./contributing.md).
