@@ -113,7 +113,7 @@ The `Reducer` function will always receive a snapshot of the current store and t
 
 ## `AsyncReadable`
 
-The `asyncReadable` store can be used to fetch a resource or perform any action asynchronously. The function will return `Readable` stores for the `loading`, `error` & `data` states of the operation. `error` & `data` will be null, unless an error or data is returned by the async operation. `loading` will be initially `false`, set to `true` while the request is ongoing, and return to `false` when complete.
+The `asyncReadable` store can be used to fetch a resource or perform any action asynchronously. The function will return `Readable` stores for the `loading`, `error` & `data` states of the operation. `error` & `data` will be null, unless an error or data is returned by the async operation. `loading` will be initially `false`, set to `true` while the request is ongoing, and return to `false` when complete. If necessary, you can pass `Readable` or `Writeable` stores as dependencies, which values will be passed to the handler function. Any change in a dependency will execute the handler again.
 
 ```ts
 // store.ts
