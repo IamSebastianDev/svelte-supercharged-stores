@@ -62,5 +62,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "svelte": "./src/index.ts"
+  "svelte": "./dist/index.js"
 }
