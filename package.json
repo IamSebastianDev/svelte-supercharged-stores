@@ -54,7 +54,7 @@
     ]
   },
   "name": "@iasd/svelte-supercharged-stores",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A collection of custom, enhanced svelte stores to abstract certain behaviour.",
   "repository": "https://github.com/IamSebastianDev/svelte-supercharged-stores.git",
   "author": "Sebastian <sebastian@iamsebastian.dev>",
