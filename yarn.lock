@@ -1152,14 +1152,15 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
 
-"@vercel/nft@^0.24.4":
-  version "0.24.4"
-  resolved "https://registry.yarnpkg.com/@vercel/nft/-/nft-0.24.4.tgz#b8942340c7821e6ff7bdf943b559642dbc9cae78"
-  integrity sha512-KjYAZty7boH5fi5udp6p+lNu6nawgs++pHW+3koErMgbRkkHuToGX/FwjN5clV1FcaM3udfd4zW/sUapkMgpZw==
+"@vercel/nft@^0.26.2":
+  version "0.26.3"
+  resolved "https://registry.yarnpkg.com/@vercel/nft/-/nft-0.26.3.tgz#9d8f5195565d67e0fc478a9d611e3236e1512c68"
+  integrity sha512-h1z/NN9ppS4YOKwSgBoopJlhm7tS2Qb/9Ld1HXjDpvvTE7mY0xVD8nllXs+RihD9uTGJISOIMzp18Eg0EApaMA==
   dependencies:
     "@mapbox/node-pre-gyp" "^1.0.5"
     "@rollup/pluginutils" "^4.0.0"
     acorn "^8.6.0"
+    acorn-import-attributes "^1.9.2"
     async-sema "^3.1.1"
     bindings "^1.4.0"
     estree-walker "2.0.2"
@@ -1194,20 +1195,25 @@ abort-controller@^3.0.0:
   dependencies:
     event-target-shim "^5.0.0"
 
+acorn-import-attributes@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/acorn-import-attributes/-/acorn-import-attributes-1.9.2.tgz#bc3765bca6ec0c5c69d2293afd582216215279b0"
+  integrity sha512-O+nfJwNolEA771IYJaiLWK1UAwjNsQmZbTRqqwBYxCgVQTmpFEMvBw6LOIQV0Me339L5UMVYFyRohGnGlQDdIQ==
+
 acorn-jsx@^5.0.0:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
   integrity sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==
 
-acorn-walk@^8.1.1, acorn-walk@^8.3.0:
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.3.1.tgz#2f10f5b69329d90ae18c58bf1fa8fccd8b959a43"
-  integrity sha512-TgUZgYvqZprrl7YldZNoa9OciCAyZR+Ejm9eXzKCmjsF5IKp/wgQ7Z/ZpjpGTIUPwrHQIcYeI8qDh4PsEwxMbw==
+acorn-walk@^8.1.1, acorn-walk@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.3.2.tgz#7703af9415f1b6db9315d6895503862e231d34aa"
+  integrity sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==
 
-acorn@^8.0.0, acorn@^8.11.2, acorn@^8.4.1, acorn@^8.6.0, acorn@^8.8.2, acorn@^8.9.0:
-  version "8.11.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.11.2.tgz#ca0d78b51895be5390a5903c5b3bdcdaf78ae40b"
-  integrity sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==
+acorn@^8.0.0, acorn@^8.11.3, acorn@^8.4.1, acorn@^8.6.0, acorn@^8.8.2, acorn@^8.9.0:
+  version "8.11.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.11.3.tgz#71e0b14e13a4ec160724b38fb7b0f233b1b81d7a"
+  integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
 
 agent-base@6, agent-base@^6.0.2:
   version "6.0.2"
@@ -1460,13 +1466,13 @@ async-sema@^3.1.1:
   integrity sha512-tLRNUXati5MFePdAk8dw7Qt7DpxPB60ofAgn8WRhW6a2rcimZnYBP9oxHiv0OHy+Wz7kPMG+t4LGdt31+4EmGg==
 
 ava@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ava/-/ava-6.0.1.tgz#3746f921e1349e6e700000bbda9269a751aaf983"
-  integrity sha512-9zR0wOwlcJdOWwHOKnpi0GrPRLTlxDFapGalP4rGD0oQRKxDVoucBBWvxVQ/2cPv10Hx1PkDXLJH5iUzhPn0/g==
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/ava/-/ava-6.1.1.tgz#76910bbd567cbe1e09345d7873e7116ae9b54153"
+  integrity sha512-A+DG0Ag0e5zvt262Ze0pG5QH7EBmhn+DB9uK7WkUtJVAtGjZFeKTpUOKx339DMGn53+FB24pCJC5klX2WU4VOw==
   dependencies:
-    "@vercel/nft" "^0.24.4"
-    acorn "^8.11.2"
-    acorn-walk "^8.3.0"
+    "@vercel/nft" "^0.26.2"
+    acorn "^8.11.3"
+    acorn-walk "^8.3.2"
     ansi-styles "^6.2.1"
     arrgv "^1.0.2"
     arrify "^3.0.0"
@@ -1492,11 +1498,11 @@ ava@^6.0.1:
     matcher "^5.0.0"
     memoize "^10.0.0"
     ms "^2.1.3"
-    p-map "^6.0.0"
+    p-map "^7.0.1"
     package-config "^5.0.0"
     picomatch "^3.0.1"
     plur "^5.1.0"
-    pretty-ms "^8.0.0"
+    pretty-ms "^9.0.0"
     resolve-cwd "^3.0.0"
     stack-utils "^2.0.6"
     strip-ansi "^7.1.0"
@@ -5660,10 +5666,10 @@ p-map@^5.1.0:
   dependencies:
     aggregate-error "^4.0.0"
 
-p-map@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/p-map/-/p-map-6.0.0.tgz#4d9c40d3171632f86c47601b709f4b4acd70fed4"
-  integrity sha512-T8BatKGY+k5rU+Q/GTYgrEf2r4xRMevAN5mtXc2aPc4rS1j3s+vWTaO2Wag94neXuCAUAs8cxBL9EeB5EA6diw==
+p-map@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/p-map/-/p-map-7.0.1.tgz#1faf994e597160f7851882926bfccabc1d226f80"
+  integrity sha512-2wnaR0XL/FDOj+TgpDuRb2KTjLnu3Fma6b1ZUwGY7LcqenMcvP/YFpjpbPKY6WVGsbuJZRuoUz8iPrt8ORnAFw==
 
 p-reduce@^3.0.0:
   version "3.0.0"
@@ -5810,10 +5816,10 @@ parse-latin@^5.0.0:
     unist-util-modify-children "^3.0.0"
     unist-util-visit-children "^2.0.0"
 
-parse-ms@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/parse-ms/-/parse-ms-3.0.0.tgz#3ea24a934913345fcc3656deda72df921da3a70e"
-  integrity sha512-Tpb8Z7r7XbbtBTrM9UhpkzzaMrqA2VXMT3YChzYltwV3P3pM6t8wl7TvpMnSTosz1aQAdVib7kdoys7vYOPerw==
+parse-ms@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/parse-ms/-/parse-ms-4.0.0.tgz#c0c058edd47c2a590151a718990533fd62803df4"
+  integrity sha512-TXfryirbmq34y8QBwgqCVLi+8oA3oWx2eAnSn62ITyEhEYaWRlVZ2DvMM9eZbMs/RfxPu/PK/aBLyGj4IrqMHw==
 
 parse5@^6.0.0:
   version "6.0.1"
@@ -5950,12 +5956,12 @@ prettier@^3.0.0:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.0.tgz#e7b19f691245a21d618c68bc54dc06122f6105ae"
   integrity sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==
 
-pretty-ms@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-8.0.0.tgz#a35563b2a02df01e595538f86d7de54ca23194a3"
-  integrity sha512-ASJqOugUF1bbzI35STMBUpZqdfYKlJugy6JBziGi2EE+AL5JPJGSzvpeVXojxrr0ViUYoToUjb5kjSEGf7Y83Q==
+pretty-ms@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-9.0.0.tgz#53c57f81171c53be7ce3fd20bdd4265422bc5929"
+  integrity sha512-E9e9HJ9R9NasGOgPaPE8VMeiPKAyWR5jcFpNnwIejslIhWqdqOrb2wShBsncMPUb+BcCd2OPYfh7p2W6oemTng==
   dependencies:
-    parse-ms "^3.0.0"
+    parse-ms "^4.0.0"
 
 pretty-quick@^3.1.3:
   version "3.1.3"
