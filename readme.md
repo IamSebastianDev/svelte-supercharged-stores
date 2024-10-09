@@ -1,3 +1,5 @@
+> Note: This repository is no longer actively maintained. The stores remain useable, but there will be no more updateds of dependencies. With the Svelte v5 release, stores will become obsolete.
+
 <!-- @format -->
 
 # Svelte Supercharged Stores 🚀
